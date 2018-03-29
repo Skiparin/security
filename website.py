@@ -22,12 +22,8 @@ def db_connect():
 def website_login(user):
 		conn = db_connect().connect()
 		sql = "select id from users where username = '" + user.get('username') + "' and password = '" + user.get('password') + "';"
-		result = conn.execute(sql)
-		#"user = {'username': 'foo', 'password': 'bar'}"
-		# do the authentication here, it is up to you!
-		# query your database, check your user/passwd file
-		# connect to external service.. anything.
-		if result.fetchone():
+		result = conn.execute(sql).fetchone()
+		if result:
 			return True  # Allowed
 		return False  # Denied
 
