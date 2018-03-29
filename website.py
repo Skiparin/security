@@ -33,3 +33,7 @@ def website_login(user):
 
 app = Flask(__name__)
 SimpleLogin(app, login_checker=website_login)
+
+@app.route('/')
+def hello_world():
+    return 'Welcome, you have logged in.'
